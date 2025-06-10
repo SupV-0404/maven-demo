@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Checkout') {
+            steps {
+                git credentialsId: 'git-token', url: 'https://github.com/SupV-0404/maven-demo.git'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn clean package'
@@ -24,3 +29,4 @@ pipeline {
         }
     }
 }
+
